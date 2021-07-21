@@ -1,6 +1,15 @@
+// Aarón Sibaja || Garita aaron.sibajagarita@ucr.ac.cr
+// Andrés Corrales Castro || andres.corralescastro@ucr.ac.cr
+
+			//---Programación Bajo Plataformaas Abiertas---//
+
+
+
 
 #include <stdlib.h>
 #include <gtk/gtk.h>
+#include <string.h>
+#include <stdio.h>
 
 
 /**VALUES CONTAINERS  
@@ -21,8 +30,8 @@
 
 
 
-float value1=0;
-float value2=0;
+char value1[100]="";
+char value2[100]="";
 float value3=0;
 int method=0;
 int door=0;
@@ -67,13 +76,13 @@ void on_window_main_destroy()
 
 
 
-
 /*  SET FUNTIONS TO THE ARITHIMETIC BOTTONS    */
+
+	// change the values for method and door
 
 	void on_operationDIV()
 	{
-
-	    
+ 
 		door=1;
     	method=3;
 
@@ -82,6 +91,7 @@ void on_window_main_destroy()
 
 	void on_operationMULT()
 	{
+
 		door=1;
     	method=2;
 
@@ -94,15 +104,11 @@ void on_window_main_destroy()
 		door=1;
     	method=1;
 
-
-		
-
 	}
 
 
 	void on_operationSUM(GtkWidget *widget, gpointer user_data)
 	{
-		
 
 		door=1;
     	method=0;
@@ -116,23 +122,29 @@ void on_window_main_destroy()
 	
     if(method == 1) 
     {
-    	char s1[3];
-    	int value3=value1-value2;
+    	char s1[100];		//a,b are containers for conversion of string to float
+    	int a =atoi(value1); // atoi(mystring)--> is a fuction that converts
+    	int b =atoi(value2); // string to an integer 
+    	int value3=a-b;
     	sprintf(s1,"%d",value3);
     	gtk_label_set_text(GTK_LABEL(lbl_SCREEN),s1);
     }
     else if (method == 0)
     {
-    	char s1[3];
-    	int value3=value1+value2;
+    	char s1[100];	//a,b are containers for conversion of string to float
+    	int a =atoi(value1); // atoi(mystring)--> is a fuction that converts
+    	int b =atoi(value2); // string to an integer 
+    	int value3=a+b;
     	sprintf(s1,"%d",value3);
     	gtk_label_set_text(GTK_LABEL(lbl_SCREEN),s1);
 
     }
      else if (method == 2)
     {
-    	char s1[3];
-    	int value3=value1*value2;
+    	char s1[100];		//a,b are containers for conversion of string to float
+    	int a =atoi(value1); // atoi(mystring)--> is a fuction that converts
+    	int b =atoi(value2); // string to an integer 
+    	int value3=a*b;
     	sprintf(s1,"%d",value3);
     	gtk_label_set_text(GTK_LABEL(lbl_SCREEN),s1);
 
@@ -140,14 +152,24 @@ void on_window_main_destroy()
 
     else if (method == 3)
     {
-    	char s1[9];
-    	if (value2 == 0)
+    	/*** a, b are containers for conversion of string to float
+    	 strtof(mystring, *ptr)--> is a function that converts
+    	 string to an float***/
+
+    	char s1[100];
+    	char *pEND;
+    	float a, b; 				
+    	a =strtof(value1, &pEND); 
+    	b =strtof(value2, &pEND);  
+    	
+    	if (b == 0) // validation of division in cero
     	{
     		gtk_label_set_text(GTK_LABEL(lbl_SCREEN), "ERROR");
     	}
     	else
     	{
-    		value3=value1/value2;
+
+    	float value3=a/b;
     		sprintf(s1,"%f",value3);
     		gtk_label_set_text(GTK_LABEL(lbl_SCREEN),s1);
     	}
@@ -155,10 +177,14 @@ void on_window_main_destroy()
 
 
     }
+    /**
+     * strcpy(char1, char2)--> is a function that copy strings, 
+     * copy char2 in char1
+		 **/
 
 
-    value1=0;
-    value2=0;
+    strcpy(value1,"");
+    strcpy(value2,"");
     door=0;
 
 
@@ -168,212 +194,254 @@ void on_window_main_destroy()
 
 	void on_btmERRASE(GtkWidget *widget, gpointer user_data)
 	{
+		/***
+		 * set all values to initial status 
+		 * 
+		 * 
+		 * strcpy(char1, char2)--> is a function that copy strings, 
+		 * copy char2 in char1
+		 **/
 
 
 
-	value1=0;
-	value2=0;
+    strcpy(value1,"");
+    strcpy(value2,"");
 	value3=0;
 	method=0;
 	door=0;
 	gtk_label_set_text(GTK_LABEL(lbl_SCREEN), "");
 
 
+}
 
 
-
-	}
-
-	void on_btmPOINT(GtkWidget *widget, gpointer user_data)
-	{
-		printf("---SIN ASIGNACIÓN---\n" );
-
-		// printf("Valor V1: %f\n",value1 );
-	 //    printf("Valor V2: %f\n",value2 );
-	 //    printf("Valor V3: %f\n",value3 );
-	 //    printf("Valor M: %d\n",method );
-	 //    printf("Valor d: %d\n",door );
-	 //    printf("       \n" );
-
-	
-
-
-	}
 
 
 
 
 
 /*  SET FUNTIONS TO THE NUMERIC BOTTONS    */
+	/**
+	*strcat(char1, char2)--> is a function that concatenate strings, add
+	*in the end of char1 the values of char2 
+	**/
 
 
 
 	void on_btm7(GtkWidget *widget, gpointer user_data)
 	{
+		/***
+		 * set number 7 
+		 * 
+		*/
 
 
 		if(door)
     	{ 
-    		value2=7; 
+    		strcat(value2, "7");
+    		gtk_label_set_text(GTK_LABEL(lbl_SCREEN), value2);
+
     	}
 		else
     	{ 
     		
-    		value1=7 ; 
+    		strcat(value1,"7");
+    		gtk_label_set_text(GTK_LABEL(lbl_SCREEN), value1);
     	}
-
-	    gtk_label_set_text(GTK_LABEL(lbl_SCREEN),"7");
-
-
-
 	}
+
 	void on_btm4(GtkWidget *widget, gpointer user_data)
 	{
+		/***
+		 * set number 4 
+		 * 
+		*/
 
 
 		if(door)
     	{ 
-    		value2=4; 
+			strcat(value2,"4");
+    		gtk_label_set_text(GTK_LABEL(lbl_SCREEN), value2);
+
     	}
 		else
     	{ 
-    		value1=4; 
+    		strcat(value1,"4"); 
+    		gtk_label_set_text(GTK_LABEL(lbl_SCREEN), value1);
     	}
-
-	    gtk_label_set_text(GTK_LABEL(lbl_SCREEN), "4");
-
 	}
+
+
 	void on_btm1(GtkWidget *widget, gpointer user_data)
 	{
+		/***
+		 * set number 4 
+		 * 
+		*/
+
+
 		if(door)
     	{ 
-    		value2=1; 
+    		strcat(value2, "1"); 
+    		gtk_label_set_text(GTK_LABEL(lbl_SCREEN), value2);
     	}
 		else
     	{ 
-    		value1=1;
+    		strcat(value1, "1"); 
+    		gtk_label_set_text(GTK_LABEL(lbl_SCREEN), value1);
 
-    	}
-
-
-	    gtk_label_set_text(GTK_LABEL(lbl_SCREEN), "1");
-
+    	}    
 	}
+
 	void on_btm8(GtkWidget *widget, gpointer user_data)
 	{
+		/***
+		 * set number 8 
+		 * 
+		*/
 
 		if(door)
     	{ 
-    		value2=8; 
+    		strcat(value2, "8"); 
+    		gtk_label_set_text(GTK_LABEL(lbl_SCREEN), value2);
     	}
 		else
     	{ 
-    		value1=8; 
-    	}
+    		strcat(value1, "8"); 
+    		gtk_label_set_text(GTK_LABEL(lbl_SCREEN), value1);
 
-	    
-	    gtk_label_set_text(GTK_LABEL(lbl_SCREEN), "8");
-
+    	}	    
 	}
 
 	void on_btm5(GtkWidget *widget, gpointer user_data)
 	{
+
+		/***
+		 * set number 5 
+		 * 
+		*/
+
 		if(door)
     	{ 
-    		value2=5; 
+    		strcat(value2, "5"); 
+    		gtk_label_set_text(GTK_LABEL(lbl_SCREEN), value2);
     	}
 		else
     	{ 
-    		value1=5; 
+    		strcat(value1, "5"); 
+    		gtk_label_set_text(GTK_LABEL(lbl_SCREEN), value1);
+
     	}
-
-	    
-	    gtk_label_set_text(GTK_LABEL(lbl_SCREEN), "5");
-
 	}
+
 	void on_btm2(GtkWidget *widget, gpointer user_data)
 	{
 
+		/***
+		 * set number 2 
+		 * 
+		*/
+
 	    if(door)
-    	{
-    		value2=2; 
+    	{ 
+    		strcat(value2, "2"); 
+    		gtk_label_set_text(GTK_LABEL(lbl_SCREEN), value2);
     	}
 		else
     	{ 
-    		value1=2; 
+    		strcat(value1, "2"); 
+    		gtk_label_set_text(GTK_LABEL(lbl_SCREEN), value1);
+
     	}
-
-
-	    gtk_label_set_text(GTK_LABEL(lbl_SCREEN), "2");
-
 	}
 
 	void on_btm9(GtkWidget *widget, gpointer user_data)
 	{
+		/***
+		 * set number 7 
+		 * 
+		*/
+
+
 		if(door)
-    	{
-    		value2=9; 
+    	{ 
+    		strcat(value2, "9"); 
+    		gtk_label_set_text(GTK_LABEL(lbl_SCREEN), value2);
     	}
 		else
     	{ 
-    		value1=9; 
+    		strcat(value1, "9"); 
+    		gtk_label_set_text(GTK_LABEL(lbl_SCREEN), value1);
+
     	}
-
-	    
-	    gtk_label_set_text(GTK_LABEL(lbl_SCREEN), "9");
-
 	}
+
 	void on_btm6(GtkWidget *widget, gpointer user_data)
 	{
+		/***
+		 * set number 7 
+		 * 
+		*/
+
+
 		if(door)
-    	{
-    		value2=6; 
+    	{ 
+    		strcat(value2, "6"); 
+    		gtk_label_set_text(GTK_LABEL(lbl_SCREEN), value2);
     	}
 		else
-    	{
-    		value1=6; 
+    	{ 
+    		strcat(value1, "6"); 
+    		gtk_label_set_text(GTK_LABEL(lbl_SCREEN), value1);
+
     	}
-
-	    
-	    gtk_label_set_text(GTK_LABEL(lbl_SCREEN), "6");
-
 	}
+
 	void on_btm3(GtkWidget *widget, gpointer user_data)
 	{
 
+		/***
+		 * set number 3 
+		 * 
+		*/
+
 		if(door)
-    	{
-    		value2=3; 
+    	{ 
+    		strcat(value2, "3"); 
+    		gtk_label_set_text(GTK_LABEL(lbl_SCREEN), value2);
     	}
 		else
     	{ 
-    		value1=3; 
+    		strcat(value1, "3"); 
+    		gtk_label_set_text(GTK_LABEL(lbl_SCREEN), value1);
+
     	}
-
-
-	    gtk_label_set_text(GTK_LABEL(lbl_SCREEN), "3");
-
 	}
-
 
 	void on_btm0(GtkWidget *widget, gpointer user_data)
 	{
+		/***
+		 * set number 0 
+		 * 
+		*/
+
 
 		if(door)
-    	{
-    		value2=0;
+    	{ 
+    		strcat(value2, "0"); 
+    		gtk_label_set_text(GTK_LABEL(lbl_SCREEN), value2);
     	}
 		else
-    	{
-    		value1=0;
+    	{ 
+    		strcat(value1, "0"); 
+    		gtk_label_set_text(GTK_LABEL(lbl_SCREEN), value1);
+
     	}
-
-
-	    gtk_label_set_text(GTK_LABEL(lbl_SCREEN), "0");
 
 	}
 
 /*****************************/
+
 
 
 
