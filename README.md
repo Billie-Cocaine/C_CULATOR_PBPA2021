@@ -37,4 +37,6 @@ To get the documentation related to the main source code:
 
 
 
-Link to the wiki of Integer Calculator : https://billie-cocaine.github.io/C_CULATOR_PBPA2021/html/index.html
+Link to the wiki of Integer Calculator : 
+
+[Integer Calculator](https://billie-cocaine.github.io/C_CULATOR_PBPA2021/html/index.html)
