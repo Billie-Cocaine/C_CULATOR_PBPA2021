@@ -5,7 +5,7 @@ To compile the application follow these steps:
   
   2- Check your version of GTK  ```pkg-config --modversion gtk+-3.0```, this applicaton uses GTK+3.
   
-  3- If your version of GTK is oldest than GTK+3, you need to update GTK, for it you can use this comand ```sudo apt-get install libgtk-3-de```.
+  3- If your version of GTK is oldest than GTK+3, you need to update GTK, for it you can use this comand ```sudo apt-get install libgtk-3-dev```.
   
   4- Run ```make``` in the directory where the repo was cloned.
   
