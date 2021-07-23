@@ -11,6 +11,13 @@ To compile the application follow these steps:
   
   5- Run ./Calculator 
   
+ 
+ 
+ 
+To get the Documentation related to the main souce code:
+
+  1- sudo apt-get install  doxygen
+  2- sudo apt-get install doxygen-gui
   
 
 
