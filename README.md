@@ -1,7 +1,7 @@
 To compile the application follow these steps:
 
 
-  1-clone https://github.com/Billie-Cocaine/C_CULATOR_PBPA2021.git on your computer.
+  1-clone https://github.com/Billie-Cocaine/Integer-Calculator.git on your computer.
   
   2- Check your version of GTK  ```pkg-config --modversion gtk+-3.0```, this applicaton uses GTK+3.
   
