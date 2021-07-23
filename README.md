@@ -14,10 +14,12 @@ To compile the application follow these steps:
  
  
  
-To get the Documentation related to the main souce code:
+To get the documentation related to the main souce code:
 
-  1- sudo apt-get install  doxygen
+  1-Install doxygen **sudo apt-get install  doxygen**
   2- sudo apt-get install doxygen-gui
+  
+  
   
 
 
