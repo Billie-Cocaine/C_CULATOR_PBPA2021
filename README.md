@@ -17,9 +17,9 @@ To compile the application follow these steps:
  
 To get the documentation related to the main source code:
 
-  1-Install doxygen ´´´sudo apt-get install  doxygen´´´
+  1-Install doxygen  **```sudo apt-get install  doxygen```
   
-  2- Instal doxywizard **sudo apt-get install doxygen-gui**
+  2- Instal doxywizard **```sudo apt-get install doxygen-gui```
   
   3- Run "**doxywizard Doxifile**" 
   
